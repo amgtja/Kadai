@@ -1,0 +1,5 @@
+# eclipse
+eclipse_connection_test
+エクリプスとGithubを連携しようとして、試しにeclipseという名前をつけたら
+名前を変える方法がわからなくてeclipseのままとなっています！
+Github機能多すぎて何が何やらわかりません！
