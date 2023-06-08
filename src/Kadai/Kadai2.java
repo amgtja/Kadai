@@ -18,10 +18,9 @@ public class Kadai2 {
                 return;
             }
         }
-        
-        AddStack addStack = new AddStack();
-        
+
         for(int i=0; i<code[pc]; i++) {
+		AddStack addStack = new AddStack();
         	meas(addStack);
         }
 	}
