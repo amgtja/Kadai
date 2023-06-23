@@ -25,6 +25,10 @@ public class Henkan {
 			return 8;
 		case "label":
 			return 9;
+		case "int":
+			return 51;
+		case "char":
+			return 52;
 		case "exit":
 			return 99;
 		default:

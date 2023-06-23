@@ -5,17 +5,18 @@ import java.util.Map;
 
 import Kadai.Global;
 
-public class MyStack {
+//Label名をスタックしていくぅ！
+public class LabelStack {
 	private static int[] arr;
 	private static int top;
 	private static int capacity;
-	public int num1;
-	public int num2;
-	public int num3;
-	public int num;
+	private int num1;
+	private int num2;
+	private int num3;
+	
 	Map<Integer, Integer> map = new HashMap<>();
 
-	public MyStack(int size) {
+	public LabelStack(int size) {
 		arr = new int[size];
 		capacity = size;
 		top = -1;
@@ -188,28 +189,5 @@ public class MyStack {
 			status();
 			System.out.println("-------");
 		}
-	}
-
-	public void label(int name, int b) {
-		Global.lhensu = b;
-		map.put(name, Global.lhensu);
-		if (Global.log) {
-			System.out.println("label");
-			System.out.println(name);
-			System.out.println("pc = " + b);
-		}
-	}
-
-	public void jumpif(int a, int value) {
-		if (pop2() == 0) {
-			value = Global.lhensu;
-		} else
-			value++;
-		System.out.println(value);
-	}
-
-	public void exit() {
-		System.out.print("owari");
-		System.exit(0);
 	}
 }
