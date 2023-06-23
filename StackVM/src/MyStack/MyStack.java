@@ -202,14 +202,29 @@ public class MyStack {
 
 	public void jumpif(int a, int value) {
 		if (pop2() == 0) {
-			value = Global.lhensu;
+			Global.setPC(Global.lhensu);
 		} else
-			value++;
+			Global.pPC(1);
 		System.out.println(value);
 	}
 
 	public void exit() {
 		System.out.print("owari");
 		System.exit(0);
+	}
+
+	public void reload() {
+		if (Global.isToken() == false) {
+			for (int i = top; i >= 0; i--) {
+				pop2();
+			}
+			Global.hensu = 0;
+			Global.setToken(true);
+			Global.setPC(0);
+			System.out.println("reloading");
+		} else {
+			Global.pPC(1);
+			System.out.println("no reloading");
+		}
 	}
 }

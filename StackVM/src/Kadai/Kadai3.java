@@ -11,12 +11,12 @@ public class Kadai3 {
 		String[] value =
 			{"push","1",
 					"set","41",
-					"label","100",
+					"get","41",
 					"get","41",
 					"push","1",
 					"add",
-					"push","10","equal",
-					"jumpif","100",
+					"add",
+					"reload",
 					"print","exit"};
 		int[] code = new int[100];
 		Global.hensu = 0;
@@ -28,49 +28,51 @@ public class Kadai3 {
 			if(value[i] == "label")
 				myS.label(code[i+1], i+2);
 		}
-		int pc = 0;
-		while (pc < code.length) {
-			switch (code[pc]) {
+		Global.setPC(0);
+		while (Global.ispc() < code.length) {
+			switch (code[Global.ispc()]) {
 			case 0:
-				myS.push(code[pc + 1]);
-				pc += 2;
+				myS.push(code[Global.ispc(1)]);
+				Global.pPC(2);
 				break;
 			case 1:
 				myS.pop();
-				pc++;
+				Global.pPC(1);
 				break;
 			case 2:
 				myS.add();
-				pc++;
+				Global.pPC(1);
 				break;
 			case 3:
 				myS.peek();
-				pc++;
+				Global.pPC(1);
 				break;
 			case 4:
-				myS.set(code[pc + 1]);
-				pc += 2;
+				myS.set(code[Global.ispc(1)]);
+				Global.pPC(2);
 				break;
 			case 5:
-				System.out.println(pc);
-				myS.get(code[pc + 1]);
-				pc += 2;
+				myS.get(code[Global.ispc(1)]);
+				Global.pPC(2);
 				break;
 			case 6:
 				myS.equal();
-				pc++;
+				Global.pPC(1);
 				break;
 			case 7:
-				myS.jumpif(code[pc + 1], pc);
-				System.out.println(pc);
+				myS.jumpif(code[Global.ispc(1)], Global.ispc());
+				System.out.println(Global.ispc());
 				break;
 			case 8:
 				myS.print();
-				pc++;
+				Global.pPC(1);
 				break;
 			case 9:
 				// label
-				pc += 2;
+				Global.pPC(2);
+				break;
+			case 98:
+				myS.reload();
 				break;
 			case 99:
 				myS.exit();
