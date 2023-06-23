@@ -1,0 +1,13 @@
+push 0 
+set i 
+label CHECK 
+get i 
+push 1 
+add 
+set i 
+get i 
+push 100 
+equal 
+jumpif 
+print 
+end
