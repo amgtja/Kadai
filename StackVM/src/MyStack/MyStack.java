@@ -200,12 +200,15 @@ public class MyStack {
 		}
 	}
 
-	public void jumpif(int a, int value) {
+	public void jumpif(int value) {
 		if (pop2() == 0) {
-			Global.setPC(Global.lhensu);
+			Global.setPC(value);
 		} else
-			Global.pPC(1);
-		System.out.println(value);
+			Global.pPC(2);
+		if (Global.log) {
+			System.out.println("*******");
+			System.out.println("jumpif");
+		}
 	}
 
 	public void exit() {
@@ -213,6 +216,7 @@ public class MyStack {
 		System.exit(0);
 	}
 
+//reloadは98
 	public void reload() {
 		if (Global.isToken() == false) {
 			for (int i = top; i >= 0; i--) {
@@ -226,5 +230,51 @@ public class MyStack {
 			Global.pPC(1);
 			System.out.println("no reloading");
 		}
+	}
+
+	// funcの番号は101
+	public void func() {
+		Global.pPC(2);
+	}
+
+	// retの番号は102
+	public void ret() {
+		// コールされていなければ何もせず次に
+		if (Global.isCALL() == 0)
+			Global.pPC();
+		// コールされていればコールのところに戻っていき、コールの値を0にする
+		else {
+			Global.setPC(Global.isCALL());
+			Global.setCALL2(0);
+			if (Global.log) {
+				System.out.println("*******");
+				System.out.println("return");
+			}
+		}
+	}
+
+	// callの番号は103
+	public void call(int a) {
+		Global.setCALL(Global.ispc(2));
+		Global.setPC(a);
+		if (Global.log) {
+			System.out.println("call");
+			System.out.println("setcall " + Global.isCALL());
+			System.out.println("*******");
+		}
+	}
+
+	public void more() {
+		if (Global.log) {
+			System.out.println("moreif");
+			System.out.println("*******");
+		}
+
+		int a = pop2();
+		int b = pop2();
+		if (a < b)
+			push(1);
+		else
+			push(0);
 	}
 }

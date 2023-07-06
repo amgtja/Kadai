@@ -25,10 +25,18 @@ public class Henkan {
 			return 8;
 		case "label":
 			return 9;
+		case "more":
+			return 10;
 		case "reload":
 			return 98;
 		case "exit":
 			return 99;
+		case "FUNC":
+			return 101;
+		case "RETURN":
+			return 102;
+		case "CALL":
+			return 103;
 		default:
 			return Integer.parseInt(value);
 		}

@@ -1,12 +1,12 @@
 package main;
 
-import Kadai.Kadai3;
+import Kadai.Kadai5_2;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Let's GO!\n");
-		Kadai3.kadai3();
+		Kadai5_2.kadai5_2();
 	}
 }
